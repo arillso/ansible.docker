@@ -4,6 +4,8 @@
 
 ## Description
 
+Installed and Configuriet then docker deamon on different Linux systems.
+
 ## Installation
 
 ```bash
@@ -12,14 +14,18 @@ ansible-galaxy install arillso.docker
 
 ## Requirements
 
+None
+
 ## Role Variables
 
 | Variable             | Default     | Comments (type)                                   |
 | :---                 | :---        | :---                                              |
-| | | |
-| | | |
+| docker_daemon | [] | Configure the daemon.json file from docker. |
+| docker_cron_enable | true | Creates a cronjob that deletes the old image and container. |
 
 ## Dependencies
+
+None
 
 ## Example Playbook
 
@@ -34,6 +40,7 @@ ansible-galaxy install arillso.docker
 ## Author
 
 * [Simon Bärlocher](https://sbaerlocher.ch)
+* [mleutenegger](https://github.com/mleutenegger)
 
 ## License
 
@@ -41,4 +48,4 @@ This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/lice
 
 ## Copyright
 
-(c) 2017, Simon Bärlocher
+(c) 2018, Simon Bärlocher
