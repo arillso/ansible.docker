@@ -53,7 +53,6 @@
 - name: install python modules
   pip:
     name: "{{ docker_package_pip }}"
-    state: latest
   tags:
     - packages
 
