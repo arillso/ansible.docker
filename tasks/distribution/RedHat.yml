@@ -2,6 +2,7 @@
 # tasks file for arillso.docker
 
 - name: "{{ ansible_distribution | lower }} : add repository"
+  become: true
   yum_repository:
     name: "{{ item.name }}"
     description: "{{ item.description}}"
