@@ -115,6 +115,5 @@
   tags:
     - configuration
     - packages
-
-- name: reset ssh connection
-  meta: reset_connection
+#- name: reset ssh connection
+#  meta: reset_connection
