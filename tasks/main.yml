@@ -2,17 +2,17 @@
 # tasks file for arillso.docker
 
 - name: add OS specific variables
-  include_vars: "{{ loop_vars }}"
+  include_vars: '{{ loop_vars }}'
   with_first_found:
     - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "{{ ansible_system }}.yml"
-        - "defaults.yml"
+        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+        - '{{ ansible_system }}.yml'
+        - 'defaults.yml'
       paths:
-        - "vars"
+        - 'vars'
   loop_control:
     loop_var: loop_vars
   tags:
@@ -20,17 +20,17 @@
     - packages
 
 - name: include distribution tasks
-  include_tasks: "{{ loop_distribution }}"
+  include_tasks: '{{ loop_distribution }}'
   with_first_found:
     - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "{{ ansible_system }}.yml"
-        - "defaults.yml"
+        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+        - '{{ ansible_system }}.yml'
+        - 'defaults.yml'
       paths:
-        - "distribution"
+        - 'distribution'
   loop_control:
     loop_var: loop_distribution
   tags:
@@ -40,10 +40,10 @@
 - name: install docker
   become: true
   package:
-    name: "{{ item }}"
+    name: '{{ item }}'
     state: present
   with_items:
-    - "{{ docker_package }}"
+    - '{{ docker_package }}'
   notify:
     - start docker
     - enable docker
@@ -51,20 +51,22 @@
     - packages
 
 - name: install python modules
+  become: true
   pip:
-    name: "{{ docker_package_pip }}"
+    name: '{{ docker_package_pip }}'
   tags:
     - packages
 
 - name: create docker directory
+  become: true
   file:
-    path: "{{ item }}"
+    path: '{{ item }}'
     state: directory
     owner: root
     group: root
     mode: 0700
   with_items:
-    - "/etc/docker"
+    - '/etc/docker'
   tags:
     - configuration
 
@@ -85,25 +87,26 @@
 - name: add our login user to docker group
   become: true
   user:
-    name: "{{ ansible_user }}"
+    name: '{{ ansible_user }}'
     groups: docker
     append: true
   tags:
     - configuration
 
 - name: create docker clean job
+  become: true
   cron:
-    name: "{{ item.name }}"
+    name: '{{ item.name }}'
     state: "{{ item.state | default('present') }}"
-    job: "{{ item.job }}"
-    minute: "{{ item.schedule.minute }}"
-    hour: "{{ item.schedule.hour }}"
-    day: "{{ item.schedule.day }}"
-    month: "{{ item.schedule.month }}"
-    weekday: "{{ item.schedule.weekday }}"
-  when: docker_cron_enable
+    job: '{{ item.job }}'
+    minute: '{{ item.schedule.minute }}'
+    hour: '{{ item.schedule.hour }}'
+    day: '{{ item.schedule.day }}'
+    month: '{{ item.schedule.month }}'
+    weekday: '{{ item.schedule.weekday }}'
+  when: docker_cron_enable | bool
   with_items:
-    - "{{ docker_cron }}"
+    - '{{ docker_cron }}'
   tags:
     - configuration
 
