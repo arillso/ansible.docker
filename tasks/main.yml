@@ -102,6 +102,7 @@
     - '{{ docker_cron }}'
   tags:
     - configuration
+    - notest
 
 - name: run handlers
   meta: flush_handlers
