@@ -54,7 +54,6 @@
   become: true
   pip:
     name: '{{ docker_package_pip }}'
-    extra_args: --upgrade
   tags:
     - packages
 

@@ -2,18 +2,17 @@
 # defaults file for arillso.docker
 
 docker_package_pip:
-  - pip
   - docker-compose
 
 docker_cron_enable: true
 docker_cron:
   - job: docker system prune -af &> /dev/null
-    name: "Docker clean up Job"
+    name: 'Docker clean up Job'
     schedule:
       minute: 0
       hour: 0
-      day: "*"
-      month: "*"
-      weekday: "*"
+      day: '*'
+      month: '*'
+      weekday: '*'
 
 docker_daemon: []
