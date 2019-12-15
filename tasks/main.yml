@@ -50,13 +50,6 @@
   tags:
     - packages
 
-- name: install python modules
-  become: true
-  pip:
-    name: '{{ docker_package_pip }}'
-  tags:
-    - packages
-
 - name: create docker directory
   become: true
   file:
