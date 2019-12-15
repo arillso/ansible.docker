@@ -1,7 +1,7 @@
 ---
 # tasks file for arillso.docker
 
-- name: "{{ ansible_distribution | lower }} : add key"
+- name: '{{ ansible_distribution | lower }} : add key'
   become: true
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
@@ -9,13 +9,15 @@
     state: present
   tags:
     - configuration
+    - notest
 
-- name: "{{ ansible_distribution | lower }} : add repository"
+- name: '{{ ansible_distribution | lower }} : add repository'
   become: true
   apt_repository:
-    repo: "deb https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} stable"
+    repo: 'deb https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} stable'
     state: present
     update_cache: true
-    filename: "docker-ce"
+    filename: 'docker-ce'
   tags:
     - configuration
+    - notest
