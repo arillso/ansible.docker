@@ -49,6 +49,7 @@
     - enable docker
   tags:
     - packages
+    - notest
 
 - name: create docker directory
   become: true
@@ -76,6 +77,7 @@
     - restart docker
   tags:
     - configuration
+    - notest
 
 - name: add our login user to docker group
   become: true
