@@ -73,7 +73,7 @@
 - name: configure docker daemon
   become: true
   template:
-    backup: yes
+    backup: true
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
     mode: '0600'
