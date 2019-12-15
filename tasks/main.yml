@@ -87,6 +87,7 @@
     append: true
   tags:
     - configuration
+    - notest
 
 - name: create docker clean job
   become: true
