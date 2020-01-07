@@ -49,13 +49,7 @@
     - enable docker
   tags:
     - packages
-
-- name: install python modules
-  become: true
-  pip:
-    name: '{{ docker_package_pip }}'
-  tags:
-    - packages
+    - notest
 
 - name: create docker directory
   become: true
@@ -73,7 +67,7 @@
 - name: configure docker daemon
   become: true
   template:
-    backup: yes
+    backup: true
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
     mode: '0600'
@@ -83,6 +77,7 @@
     - restart docker
   tags:
     - configuration
+    - notest
 
 - name: add our login user to docker group
   become: true
@@ -92,6 +87,7 @@
     append: true
   tags:
     - configuration
+    - notest
 
 - name: create docker clean job
   become: true
@@ -109,6 +105,7 @@
     - '{{ docker_cron }}'
   tags:
     - configuration
+    - notest
 
 - name: run handlers
   meta: flush_handlers

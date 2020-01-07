@@ -1,6 +1,6 @@
 # Ansible Role: docker
 
-[![Build Status](https://travis-ci.org/arillso/ansible.docker.svg?branch=master)](https://travis-ci.org/arillso/ansible.docker) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://sbaerlo.ch/licence) [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-docker-blue.svg)](https://galaxy.ansible.com/arillso/docker)
+[![Build Status](https://img.shields.io/travis/arillso/ansible.docker.svg?branch=master&style=popout-square)](https://travis-ci.org/arillso/ansible.docker) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](licence) [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-docker-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/docker) [![Ansible Role](https://img.shields.io/ansible/role/d/30744.svg?style=popout-square)](https://galaxy.ansible.com/arillso/docker)
 
 ## Description
 
@@ -35,8 +35,6 @@ None
     - arillso.docker
 ```
 
-## Changelog
-
 ## Author
 
 - [Simon Bärlocher](https://sbaerlocher.ch)
@@ -48,4 +46,4 @@ This project is under the MIT License. See the [LICENSE](https://sbaerlo.ch/lice
 
 ## Copyright
 
-(c) 2019, Arillso
+(c) 2020, Arillso

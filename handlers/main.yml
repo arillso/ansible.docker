@@ -6,15 +6,21 @@
   service:
     name: docker
     state: restarted
+  tags:
+    - notest
 
 - name: start docker
   become: true
   service:
     name: docker
     state: started
+  tags:
+    - notest
 
 - name: enable docker
   become: true
   service:
     name: docker
     enabled: true
+  tags:
+    - notest
